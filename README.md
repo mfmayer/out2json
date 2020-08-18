@@ -4,7 +4,7 @@ stdjson converts an application output to **stdout** and **stderr** into json fo
 
 ## Install
 
-stdjson is written in go and can therefore be installed via: ``go get github.com/mfmayer/mfgrep`` (go must be installed).
+stdjson is written in go and can therefore be installed via: ``go get github.com/mfmayer/stdjson`` (go must be installed).
 
 ## Usage of stdjson
 
