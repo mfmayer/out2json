@@ -1,2 +1,2 @@
-# out2json
-out2json allows to start any other application and intercepts all lines it writes to stdout and stderr to wrap their content/data into indexed json format `{\"i\":&lt;lineIndex>,\"d\":&lt;lineContent>}`
+# stdjson
+stdjson allows to start any  application and converts its outputted lines to stderr and stdout into json format with each line getting an index number.
