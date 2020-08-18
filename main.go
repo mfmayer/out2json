@@ -73,17 +73,17 @@ func main() {
 	cmd := exec.Command(os.Args[1], params...)
 
 	// create pipes to read stderr and stdout
-	stderrReader, stderrWriter := io.Pipe()
 	stdoutReader, stdoutWriter := io.Pipe()
+	stderrReader, stderrWriter := io.Pipe()
 
 	cmd.Stdin = os.Stdin
-	cmd.Stdout = stderrWriter
-	cmd.Stderr = stdoutWriter
+	cmd.Stdout = stdoutWriter
+	cmd.Stderr = stderrWriter
 
 	wg := sync.WaitGroup{}
 	wg.Add(2)
-	go processStream(stderrReader, os.Stderr, &wg)
 	go processStream(stdoutReader, os.Stdout, &wg)
+	go processStream(stderrReader, os.Stderr, &wg)
 
 	// start command
 	if err := cmd.Start(); err != nil {
@@ -103,8 +103,8 @@ func main() {
 	}
 
 	// close pipes
-	stderrWriter.Close()
 	stdoutWriter.Close()
+	stderrWriter.Close()
 
 	// wait for go routiens that process stderr & stdout
 	wg.Wait()
