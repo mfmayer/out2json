@@ -83,7 +83,7 @@ func main() {
 	wg := sync.WaitGroup{}
 	wg.Add(2)
 	go processStream(stderrReader, os.Stderr, &wg)
-	go processStream(stdoutReader, os.Stderr, &wg)
+	go processStream(stdoutReader, os.Stdout, &wg)
 
 	// start command
 	if err := cmd.Start(); err != nil {
